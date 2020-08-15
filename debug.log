@@ -1,0 +1,4 @@
+[0814/133734.884:ERROR:crashpad.cc(153)] Failed to get activation factory for IPlatformDiagnosticsAndUsageDataSettingsStatics
+[0814/174521.157:ERROR:crashpad.cc(153)] Failed to get activation factory for IPlatformDiagnosticsAndUsageDataSettingsStatics
+[0814/174953.278:ERROR:process_info.cc(617)] range at 0x0, size 0x28 fully unreadable
+[0815/142140.290:ERROR:crashpad.cc(153)] Failed to get activation factory for IPlatformDiagnosticsAndUsageDataSettingsStatics
