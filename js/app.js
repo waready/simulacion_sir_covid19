@@ -154,13 +154,13 @@ function simulate(){
                 backgroundColor: "transparent",
                 borderColor: 'rgb(81,133,255)',
                 type: 'line',
-                data: [0]
+                data: []
             },
             {
                 label: 'Recuperados Acumulados',
                 backgroundColor: 'rgb(222, 249, 86)',
                 borderColor: 'rgb(222, 249, 86)',
-                data: [0]
+                data: []
             }],
         },
     
