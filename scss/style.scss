@@ -1,17 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 
 $color_font: #626161;
+$color_line: #d9d9d9;
 
-p, h1, h2, h3, h4, h5, h6, div{
+p, h1, h2, h3, h4, h5, h6, div, sub, b{
     color: $color_font;
     font-family: 'Nunito', sans-serif;
 }
 
-.left__result{
-
-}
-.rigth__result{
-    #chart{
+.top{
+    .top__result{
+        #chart{
+            width: 100%;
+            border: 1px solid $color_line !important;
+            border-radius: 5px;
+            margin-top: 2em;
+        }
+    }
+    .bottom__result{
+        padding: 1em;
+        border: 1px solid $color_line;
+        border-radius: 5px;
         width: 100%;
+        margin-top:2em;
+        .parametter_estimates{
+           .info{
+               display: inline-flex;
+               .p__item{
+                   padding-right: 3em;
+                   padding-top: 1em;
+                   padding-bottom: 2em;
+               }
+    
+           } 
+        }
+    }
+}
+.bottom{
+    padding: 1em;
+    border: 1px solid $color_line;
+    border-radius: 5px;
+    .info{
+        .container__info{
+            .datos{
+                padding: 1em 0;
+                .item{
+                    border: 1px solid $color_line;
+                    display: inline-flex;
+                    width: 100%;
+                    border-radius: 5px;
+                    margin: 0.5em 0;
+                    padding: 1em;
+                    p{
+                        margin: 0;
+                    }
+                }
+                .item__info{
+                    border: 1px solid $color_line;
+                    width: 100%;
+                    border-radius: 5px;
+                    margin: 0.5em 0;
+                    padding: 1em;
+                    label{
+                        margin: 0;
+                        p{
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #simulation{
+        margin-top: 2em;
     }
 }

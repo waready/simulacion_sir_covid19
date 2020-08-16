@@ -55,137 +55,138 @@
         </nav>
         <!--/.Navbar-->
 
-        <div class="container" id="basic-info">
-            <div class="container">
-                <div class="container">
-                    <div class="row">
-                        <div id="overlay">
-                            <div id="overlayText">
-                                Cargando data...
-                            </div>
-                        </div>
-                        <div id="chartDiv">
-                            <canvas id="chart" width="1200" height="600" style="border: 1px solid;"> </canvas>
-                        </div>
+        <div class="container top" id="basic-info">
+          <div class="row">
+              <div id="overlay">
+                  <div id="overlayText">
+                      Cargando data...
+                  </div>
+              </div>
+              <div id="chartDiv" class="top__result">
+                  <canvas id="chart" width="1200" height="600" style="border: 1px solid;"> </canvas>
+              </div>
+              <div class="bottom__result">
+                  <div>
+                    Datos utilizados para la estimacion de los parametros:
+                    <div style="display: none;">
+                        <label for="latest">Latest</label>
+                        <input type="radio" name="EstimationMode" id="opt_latest" class="inputs" />
 
-                        <div>
-                            Datos utilizados para la estimacion de los parametros:
-                            <div style="display: none;">
-                                <label for="latest">Latest</label>
-                                <input type="radio" name="EstimationMode" id="opt_latest" class="inputs" />
+                        <label for="min">Last 5</label>
+                        <input type="radio" name="EstimationMode" class="inputs" id="opt_last5" />
 
-                                <label for="min">Last 5</label>
-                                <input type="radio" name="EstimationMode" class="inputs" id="opt_last5" />
-
-                                <label for="max">Last 14</label>
-                                <input type="radio" name="EstimationMode" class="inputs" id="opt_last14" />
-                            </div>
-
-                            <label for="mean">Mean</label>
-                            <input type="radio" name="EstimationMode" class="inputs" id="opt_mean" checked />
-                        </div>
-                        <br />
-
-                        <h4>
-                            Parametros estimados:
-                        </h4>
-                        <div class="col">
-                            <div title="Contact rate (Infection constant)"><b>β</b> = <span id="betaText">-</span></div>
-                            <div title="Recovery constant"><b>α</b> = <span id="alphaText">-</span></div>
-                            <div title="Basic Reproduction Number, beta/alpha">
-                                <a href="https://en.wikipedia.org/wiki/Basic_reproduction_number" style="text-decoration: none;"><b>R</b><sub>0</sub></a> =
-                                <span id="R0Text">-</span>
-                            </div>
-                            <div title="Initial infective population">I<sub>0</sub> = <span id="I0Text">-</span></div>
-                            <br />
-                        </div>
-                        <div class="row">
-                            <div class="col-2">
-                                Pais
-                                <select id="sel_countries" class="inputs" style="display: none;">
-                                    <option value="Peru" selected>Peru</option>
-                                </select>
-                                <select name="" id="" disabled>
-                                    <option value="">Peru</option>
-                                </select>
-                            </div>
-                            <div class="col-5">Poblacion Total<input type="number" id="N" class="inputs" value="7e9" min="10" title="Total population" disabled /></div>
-                            <div>
-                                <label for="maxTime">Dias</label>
-                                <input type="number" id="maxTime" class="inputs" value="365" title="Duration to simulate" />
-                            </div>
-
-                            <label for="chkShowTable">Mostrar Tabla de datos</label>
-                            <input type="checkbox" id="chkShowTable" onclick="toggleTableVisibility();" autocomplete="off" />
-
-                            <div id="dataTableHolder" style="display: none;"></div>
-                        </div>
+                        <label for="max">Last 14</label>
+                        <input type="radio" name="EstimationMode" class="inputs" id="opt_last14" />
                     </div>
 
-                    <hr />
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="container" id="display-info">
-                                <div class="card">
-                                    <div class="container">
-                                        <p id="poblacion">Población:</p>
-
-                                        <p id="NumPoblacion">100</p>
-
-                                        <p id="contagios">Contagios:</p>
-
-                                        <p id="NumContagios">1</p>
-                                        <hr />
-
-                                        <input type="range" class="custom-range" min="2" max="500" step="2" id="Habitantes" />
-                                        <label for="customRange1">
-                                            Habitantes:
-                                            <p id="InitPopulation">100</p>
-                                        </label>
-
-                                        <input type="range" class="custom-range" min="1" max="3" step="0.5" id="MoviPob" />
-                                        <label for="customRange1">
-                                            Velocidad inicial de la población:
-                                            <p id="MovPopulation">1</p>
-                                        </label>
-                                        <hr />
-                                        <div>
-                                            <span id="poblacion">1 : Cuarentena Total</span><br />
-                                            <span id="poblacion">2 : Cuarentena Parcial </span><br />
-                                            <span id="poblacion">3 : Sin Cuarentena </span>
-                                        </div>
-
-                                        <div class="container text-center">
-                                            <button type="button" class="btn btn-primary" onclick="simulate()">Simular</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-8">
-                            <div class="container">
-                                <div class="card">
-                                    <canvas id="myChart"></canvas>
-                                </div>
-                                <br />
-                                <div class="card">
-                                    <canvas id="myChart1"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <label for="mean">Mean</label>
+                    <input type="radio" name="EstimationMode" class="inputs" id="opt_mean" checked />
                 </div>
-            </div>
+                <br />
+                <div class="parametter_estimates">
+                  <h4>
+                    Parametros estimados:
+                  </h4>
+                  <div class="col-md-12 info">
+                      <div class="p__item" title="Contact rate (Infection constant)"><b>β</b> = <span id="betaText">-</span></div>
+                      <div class="p__item" title="Recovery constant"><b>α</b> = <span id="alphaText">-</span></div>
+                      <div class="p__item" title="Basic Reproduction Number, beta/alpha">
+                          <a href="https://en.wikipedia.org/wiki/Basic_reproduction_number" style="text-decoration: none;"><b>R</b><sub>0</sub></a> =
+                          <span id="R0Text">-</span>
+                      </div>
+                      <div class="p__item" title="Initial infective population">I<sub>0</sub> = <span id="I0Text">-</span></div>
+                      <br />
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        Pais
+                        <select id="sel_countries" class="inputs" style="display: none;">
+                            <option value="Peru" selected>Peru</option>
+                        </select>
+                        <select name="" id="" disabled>
+                            <option value="">Peru</option>
+                        </select>
+                    </div>
+                    <div class="col-5">Poblacion Total<input type="number" id="N" class="inputs" value="7e9" min="10" title="Total population" disabled /></div>
+                    <div>
+                        <label for="maxTime">Dias</label>
+                        <input type="number" id="maxTime" class="inputs" value="365" title="Duration to simulate" />
+                    </div>
+
+                    <label for="chkShowTable">Mostrar Tabla de datos</label>
+                    <input type="checkbox" id="chkShowTable" onclick="toggleTableVisibility();" autocomplete="off" />
+
+                    <div id="dataTableHolder" style="display: none;"></div>
+                </div>
+              </div>
+          </div>
+          <hr />            
+        </div>
+        <div class="container bottom">
+          <div class="row">
+              <div class="col-md-4 info">
+                  <div class="container__info" id="display-info">
+                    <div class="datos">
+                      <div class="item">
+                        <p id="poblacion">Población:</p>
+                        <p id="NumPoblacion">100</p>
+                      </div>
+                      <div class="item">
+                        <p id="contagios">Contagios:</p>
+                        <p id="NumContagios">1</p>
+                      </div>
+                      <div class="item__info">
+                        <input type="range" class="custom-range" min="2" max="500" step="2" id="Habitantes" />
+                        <label for="customRange1">
+                            Habitantes:
+                            <p id="InitPopulation">100</p>
+                        </label>
+                      </div>
+                      <div class="item__info">
+                        <input type="range" class="custom-range" min="1" max="3" step="0.5" id="MoviPob" />
+                        <label for="customRange1">
+                            Velocidad inicial de la población:
+                            <p id="MovPopulation">1</p>
+                        </label>
+                        <hr/>
+                        <div>
+                            <span id="poblacion">1 : Cuarentena Total</span><br />
+                            <span id="poblacion">2 : Cuarentena Parcial </span><br />
+                            <span id="poblacion">3 : Sin Cuarentena </span>
+                        </div>
+                      </div>
+
+
+                      <div class="container text-center">
+                          <button type="button" class="btn btn-primary" onclick="simulate()">Simular</button>
+                      </div>
+                    </div>
+                  
+                  </div>
+              </div>
+
+              <div class="col-md-8">
+                  <div class="container">
+                      <div class="card">
+                          <canvas id="myChart"></canvas>
+                      </div>
+                      <br />
+                      <div class="card">
+                          <canvas id="myChart1"></canvas>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="" id="simulation">
+              <div class="card">
+                  <button type="button" class="btn btn-primary" onclick="simulate()">Simular</button>
+                  <canvas id="bouncingBall"></canvas>
+              </div>
+          </div>
         </div>
 
-        <div class="container" id="simulation">
-            <div class="card">
-                <button type="button" class="btn btn-primary" onclick="simulate()">Simular</button>
-                <canvas id="bouncingBall"></canvas>
-            </div>
-        </div>
         <hr />
 
         <script src="js/main.js"></script>
