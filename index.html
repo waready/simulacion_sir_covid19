@@ -1,236 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Escenarios COVID19</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="css/mdb.min.css">
-  <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="css/style.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>Escenarios COVID19</title>
+        <!-- MDB icon -->
+        <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+        <!-- Google Fonts Roboto -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <!-- Material Design Bootstrap -->
+        <link rel="stylesheet" href="css/mdb.min.css" />
+        <!-- Your custom styles (optional) -->
+        <link rel="stylesheet" href="css/style.css" />
 
-  <link href="https://unpkg.com/tabulator-tables@4.6.0/dist/css/tabulator.min.css" rel="stylesheet">
-  
-  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.6.0/dist/js/tabulator.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-</head>
-<body>
+        <link href="https://unpkg.com/tabulator-tables@4.6.0/dist/css/tabulator.min.css" rel="stylesheet" />
 
-  <!-- Start your project here-->  
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark info-color">
+        <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.6.0/dist/js/tabulator.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    </head>
+    <body>
+        <!-- Start your project here-->
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark info-color">
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">COVID19</a>
 
-      <!-- Navbar brand -->
-      <a class="navbar-brand" href="#">COVID19</a>
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-      <!-- Collapse button -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Collapsible content -->
-      <div class="collapse navbar-collapse" id="basicExampleNav">
-
-        <!-- Links -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Items 1
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">items 2</a>
-          </li>
-        </ul>
-        <!-- Links -->
-      </div>
-      <!-- Collapsible content -->
-
-    </nav>
-    <!--/.Navbar-->
-
-    <div class="container" id="basic-info">
-      <div class="container">
-        <div class="container">
-          <div class="row">
-            <div id="overlay">
-              <div id="overlayText">
-                Cargando data...
-              </div>
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Items 1
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">items 2</a>
+                    </li>
+                </ul>
+                <!-- Links -->
             </div>
-            <div id="chartDiv">
-                <canvas id="chart" width="1200" height="600" style="border:1px solid">
-                </canvas>
-            </div>
-          
-            <div>
-                Datos utilizados para la estimacion de los parametros:
-                <div style="display:none">
-                  
-                  <label for="latest">Latest</label>
-                  <input type="radio" name="EstimationMode" id="opt_latest" class="inputs" >
-              
-                  <label for="min">Last 5</label>
-                  <input type="radio" name="EstimationMode" class="inputs" id="opt_last5">
-              
-                  <label for="max">Last 14</label>
-                  <input type="radio" name="EstimationMode" class="inputs" id="opt_last14">
-                </div>
-            
-                <label for="mean">Mean</label>
-                <input type="radio" name="EstimationMode" class="inputs" id="opt_mean" checked>
-            </div>
-            <br />
+            <!-- Collapsible content -->
+        </nav>
+        <!--/.Navbar-->
 
-            <h4>
-              Parametros estimados:
-            </h4>
-            <div class="col">
-              <div title="Contact rate (Infection constant)">
-                <b>β</b> = <span id="betaText">-</span>
-              </div>
-              <div title="Recovery constant">
-                <b>α</b> = <span id="alphaText">-</span>
-              </div>
-              <div title="Basic Reproduction Number, beta/alpha">
-                  <a href="https://en.wikipedia.org/wiki/Basic_reproduction_number"
-                      style="text-decoration:none;"><b>R</b><sub>0</sub></a> =
-                  <span id="R0Text">-</span>
-              </div>
-              <div title="Initial infective population">
-                  I<sub>0</sub> = <span id="I0Text">-</span>
-              </div>
-              <br />
-            </div>
-          <div class="row">
-              <div class="col-2">
-                  Pais
-                  <select id="sel_countries" class="inputs" style="display: none">
-                      <option value="Peru" selected>Peru</option>
-                  </select>
-                  <select name="" id="" disabled>
-                    <option value="">Peru</option>
-                  </select>
-                  
-              </div>
-              <div class="col-5">
-                  Poblacion Total<input type="number" id="N" class="inputs" value=7e9 min=10 title="Total population" disabled>
-              </div>
-              <div>
-                  <label for="maxTime">Dias</label>
-                  <input type="number" id="maxTime" class="inputs" value=365 title="Duration to simulate">
-              </div>
-            
-              <label for="chkShowTable">Mostrar Tabla de datos</label>
-              <input type="checkbox" id="chkShowTable" onclick="toggleTableVisibility();" autocomplete="off">
-            
-              <div id="dataTableHolder" style="display:none;" ></div>
-            </div>
-          </div>
-            
+        <div class="container" id="basic-info">
+            <div class="container">
+                <div class="container">
+                    <div class="row">
+                        <div id="overlay">
+                            <div id="overlayText">
+                                Cargando data...
+                            </div>
+                        </div>
+                        <div id="chartDiv">
+                            <canvas id="chart" width="1200" height="600" style="border: 1px solid;"> </canvas>
+                        </div>
 
-          <hr>
+                        <div>
+                            Datos utilizados para la estimacion de los parametros:
+                            <div style="display: none;">
+                                <label for="latest">Latest</label>
+                                <input type="radio" name="EstimationMode" id="opt_latest" class="inputs" />
 
-          <div class="row">
-            <div class="col-md-4">
+                                <label for="min">Last 5</label>
+                                <input type="radio" name="EstimationMode" class="inputs" id="opt_last5" />
 
-              <div class="container" id="display-info">
-                <div class="card">
-                  <div class="container">
-                    <p id="poblacion">Población: </p>
+                                <label for="max">Last 14</label>
+                                <input type="radio" name="EstimationMode" class="inputs" id="opt_last14" />
+                            </div>
 
-                      <p id="NumPoblacion">100</p>
+                            <label for="mean">Mean</label>
+                            <input type="radio" name="EstimationMode" class="inputs" id="opt_mean" checked />
+                        </div>
+                        <br />
 
-                    <p id="contagios">Contagios: </p>
+                        <h4>
+                            Parametros estimados:
+                        </h4>
+                        <div class="col">
+                            <div title="Contact rate (Infection constant)"><b>β</b> = <span id="betaText">-</span></div>
+                            <div title="Recovery constant"><b>α</b> = <span id="alphaText">-</span></div>
+                            <div title="Basic Reproduction Number, beta/alpha">
+                                <a href="https://en.wikipedia.org/wiki/Basic_reproduction_number" style="text-decoration: none;"><b>R</b><sub>0</sub></a> =
+                                <span id="R0Text">-</span>
+                            </div>
+                            <div title="Initial infective population">I<sub>0</sub> = <span id="I0Text">-</span></div>
+                            <br />
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                Pais
+                                <select id="sel_countries" class="inputs" style="display: none;">
+                                    <option value="Peru" selected>Peru</option>
+                                </select>
+                                <select name="" id="" disabled>
+                                    <option value="">Peru</option>
+                                </select>
+                            </div>
+                            <div class="col-5">Poblacion Total<input type="number" id="N" class="inputs" value="7e9" min="10" title="Total population" disabled /></div>
+                            <div>
+                                <label for="maxTime">Dias</label>
+                                <input type="number" id="maxTime" class="inputs" value="365" title="Duration to simulate" />
+                            </div>
 
-                      <p id="NumContagios">1</p>
-                      <hr>
-                    
-                      <input type="range" class="custom-range" min="2" max="500" step="2" id="Habitantes">
-                      <label for="customRange1">Habitantes: <p id="InitPopulation">100</p></label>
+                            <label for="chkShowTable">Mostrar Tabla de datos</label>
+                            <input type="checkbox" id="chkShowTable" onclick="toggleTableVisibility();" autocomplete="off" />
 
-                    <input type="range" class="custom-range" min="1" max="3" step="0.5" id="MoviPob">
-                    <label for="customRange1">Velocidad inicial de la población: <p id="MovPopulation">1</p></label>
-                      <hr>  
-                    <div>
-                        <span id="poblacion">1 : Cuarentena Total</span><br>
-                        <span id="poblacion">2 : Cuarentena Parcial </span><br>
-                        <span id="poblacion">3 : Sin Cuarentena  </span>
-                      </div>
-                    
-                    <div class="container text-center">
-                      <button type="button" class="btn btn-primary" onclick="simulate()">Simular</button>
+                            <div id="dataTableHolder" style="display: none;"></div>
+                        </div>
                     </div>
 
-                  </div>
-                </div>
-              </div>
+                    <hr />
 
-            </div>
-          
-            <div class="col-md-8">
-              <div class="container">
-                <div class="card">
-                  <canvas id="myChart"></canvas>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="container" id="display-info">
+                                <div class="card">
+                                    <div class="container">
+                                        <p id="poblacion">Población:</p>
+
+                                        <p id="NumPoblacion">100</p>
+
+                                        <p id="contagios">Contagios:</p>
+
+                                        <p id="NumContagios">1</p>
+                                        <hr />
+
+                                        <input type="range" class="custom-range" min="2" max="500" step="2" id="Habitantes" />
+                                        <label for="customRange1">
+                                            Habitantes:
+                                            <p id="InitPopulation">100</p>
+                                        </label>
+
+                                        <input type="range" class="custom-range" min="1" max="3" step="0.5" id="MoviPob" />
+                                        <label for="customRange1">
+                                            Velocidad inicial de la población:
+                                            <p id="MovPopulation">1</p>
+                                        </label>
+                                        <hr />
+                                        <div>
+                                            <span id="poblacion">1 : Cuarentena Total</span><br />
+                                            <span id="poblacion">2 : Cuarentena Parcial </span><br />
+                                            <span id="poblacion">3 : Sin Cuarentena </span>
+                                        </div>
+
+                                        <div class="container text-center">
+                                            <button type="button" class="btn btn-primary" onclick="simulate()">Simular</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="container">
+                                <div class="card">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                                <br />
+                                <div class="card">
+                                    <canvas id="myChart1"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <br>
-                <div class="card">
-                  <canvas id="myChart1"></canvas>
-                </div>
-              </div>
-              
             </div>
-            
-          </div>    
         </div>
-      </div>
-    </div>
 
-    
-    <div class="container" id="simulation">
-      <div class="card">
-          <button type="button" class="btn btn-primary" onclick="simulate()">Simular</button>
-        <canvas id="bouncingBall"></canvas>
-      </div>
-    </div>
-    <hr>
-  
-  
+        <div class="container" id="simulation">
+            <div class="card">
+                <button type="button" class="btn btn-primary" onclick="simulate()">Simular</button>
+                <canvas id="bouncingBall"></canvas>
+            </div>
+        </div>
+        <hr />
 
-  
-  <script src="js/main.js"></script>
+        <script src="js/main.js"></script>
 
-  <!-- End your project here-->
+        <!-- End your project here-->
 
-  <!-- jQuery -->
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!--Chart JS-->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-  <!--Bouncing balls-->
-  <!--<script type="text/javascript" src="js/bouncingBall.js"></script>-->
-  <script type="text/javascript" src="js/app.js"></script>
-  <!--Chart-->
-  <!--<script type="text/javascript" src="js/casesChart.js"></script>-->
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript">
-  
-  </script>
-
-</body>
+        <!-- jQuery -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!--Chart JS-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+        <!--Bouncing balls-->
+        <!--<script type="text/javascript" src="js/bouncingBall.js"></script>-->
+        <script type="text/javascript" src="js/app.js"></script>
+        <!--Chart-->
+        <!--<script type="text/javascript" src="js/casesChart.js"></script>-->
+        <!-- Your custom scripts (optional) -->
+        <script type="text/javascript"></script>
+    </body>
 </html>
