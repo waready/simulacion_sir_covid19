@@ -3,5 +3,5 @@
 
 Trabajo desarrollado por
     -Antony Japura Paredes
-    -Aly Mamani Machaca
-    -Caleb Ichuta Arias
+    -Aly Yuliza Machaca Mamani
+    -Caleb Fernando Ichuta Arias
