@@ -42,6 +42,8 @@ var canvas = document.getElementById('bouncingBall');
 var ctx = canvas.getContext('2d');
 resizeCanvas();
 var ctx2 = document.getElementById('myChart').getContext('2d');
+var ctx3 = document.getElementById('myChart1').getContext('2d');
+
 var chart2 = new Chart(ctx2, {
     // The type of chart we want to create
     type: 'bar',
@@ -60,22 +62,34 @@ var chart2 = new Chart(ctx2, {
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: []
+        }]
+        
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+var chart3 = new Chart(ctx3, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Recuperados',
+            backgroundColor: "transparent",
+            borderColor: 'rgb(81,133,255)',
+            type: 'line',
+            data: []
         },
         {
             label: 'Recuperados Acumulados',
             backgroundColor: 'rgb(222, 249, 86)',
             borderColor: 'rgb(222, 249, 86)',
             data: []
-        }
-        ],
-        recuperados:
-        {
-            label: 'Recuperados Acumulados',
-            backgroundColor: 'rgb(222, 249, 86)',
-            borderColor: 'rgb(222, 249, 86)',
-            data: []
-        }
-        
+        }]  
     },
 
     // Configuration options go here
@@ -119,19 +133,35 @@ function simulate(){
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: []
+            }]
+        },
+    
+        // Configuration options go here
+        options: {}
+    });
+
+    chart3.clear();
+    chart3.destroy();
+    chart3 = new Chart(ctx3, {
+        // The type of chart we want to create
+        type: 'bar',
+    
+        // The data for our dataset
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Recuperados',
+                backgroundColor: "transparent",
+                borderColor: 'rgb(81,133,255)',
+                type: 'line',
+                data: [0]
             },
             {
                 label: 'Recuperados Acumulados',
                 backgroundColor: 'rgb(222, 249, 86)',
                 borderColor: 'rgb(222, 249, 86)',
-                data: []
+                data: [0]
             }],
-            recuperados:{
-                label: 'Recuperados Acumulados',
-                backgroundColor: 'rgb(222, 249, 86)',
-                borderColor: 'rgb(222, 249, 86)',
-                data: []
-            }
         },
     
         // Configuration options go here
@@ -403,28 +433,37 @@ function simulate(){
 
     function fillChart(){
         for (var i = 0; i < dataset.length; i++) {
-            //console.log(dataset[i])
-            addData(chart2, "-", dataset[i]);
+            
+            addData(chart2,chart3, "-", dataset[i]);
         }
     }
 
-    function addData(chart, label, data) {
+    function addData(chart,chart3, label, data) {
         chart.data.labels.push(label);
+        
         chart.data.datasets.forEach((dataset) => {
             dataset.data.push(data * 0.3);
             
         });
-       console.log(chart.data.recuperados.data.push(data));
-        console.log(chart.data.recuperados)
         chart.update();
-        recupe(chart)
+    //    console.log(chart3.data.recuperados.data.push(data));
+    //     console.log(chart3.data.recuperados)
+        chart3.data.labels.push(label);
+    
+        chart3.data.datasets.forEach((dataset) => {
+            dataset.data.push(data);
+            console.log('tag',  data)            
+        });
+
+        chart3.update()
+        //recupe(chart3)
     }
     function recupe(chart){
         var dedo=0;
         for(var i=0; i<chart.data.recuperados.data.length;i++){
-            console.log( 'original',chart.data.recuperados.data[i])
+          //  console.log( 'original',chart.data.recuperados.data[i])
             dedo= chart.data.recuperados.data[i]
-            console.log(dedo);
+           // console.log(dedo);
 
 
         }

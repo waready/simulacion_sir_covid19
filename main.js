@@ -129,7 +129,7 @@ function finishedFetchingData() {
         let I = 0.5 * (todayActiveCases + yesterdayActiveCases);
         let S = 0.5 * (susceptibleToday + susceptibleToday);
         beta = Math.abs(delS) / (I * S / N);
-
+        console.log(beta)
         let cumulativeRemovedToday = fetchedData[i].removed_;
         let cumulativeRemovedYesterday = fetchedData[i - 1].removed_;
         let delR = cumulativeRemovedToday - cumulativeRemovedYesterday;
@@ -290,7 +290,7 @@ function drawChart(output, y0, R0) {
         data: {
             labels: output.t,
             datasets: [{
-                label: 'Est. Infected',
+                label: 'Infectados',
                 data: output.I,
                 borderColor: ['rgba(255, 99, 132, 1)'],
                 borderWidth: 1,
@@ -298,7 +298,7 @@ function drawChart(output, y0, R0) {
                 pointRadius: 1
             },
             {
-                label: 'Est. Susceptible',
+                label: 'Susceptibles',
                 data: output.S,
                 borderColor: ['rgba(99, 255, 132, 1)'],
                 borderWidth: 1,
@@ -306,53 +306,53 @@ function drawChart(output, y0, R0) {
                 pointRadius: 1
             },
             {
-                label: 'Est. Recovered',
+                label: 'Recuperados',
                 data: output.R,
-                borderColor: ['rgba(99, 132, 255, 1)'],
+                borderColor: ['rgb(222, 249, 86)'],
                 borderWidth: 1,
-                fill: false,
-                pointRadius: 1
-            },
-            {
-                label: 'Est. Cumulative infected',
-                data: output.IplusR,
-                borderColor: ['rgba(150, 132, 55, 1)'],
-                borderWidth: 1,
-                fill: false,
-                pointRadius: 1
-            },
-            {
-                label: 'Obs. Infected',
-                data: output.realI,
-                borderColor: ['rgba(205, 49, 82, 1)'],
-                borderWidth: 2,
-                fill: false,
-                pointRadius: 1
-            },
-            {
-                label: 'Obs. Susceptible',
-                data: output.realS,
-                borderColor: ['rgba(49, 205, 82, 1)'],
-                borderWidth: 2,
-                fill: false,
-                pointRadius: 1
-            },
-            {
-                label: 'Obs. Recovered',
-                data: output.realR,
-                borderColor: ['rgba(49, 82, 205, 1)'],
-                borderWidth: 2,
-                fill: false,
-                pointRadius: 1
-            },
-            {
-                label: 'Obs. Cumulative infected',
-                data: output.realIplusR,
-                borderColor: ['rgba(100, 82, 5, 1)'],
-                borderWidth: 2,
                 fill: false,
                 pointRadius: 1
             }
+            // {
+            //     label: 'Est. Cumulative infected',
+            //     data: output.IplusR,
+            //     borderColor: ['rgba(150, 132, 55, 1)'],
+            //     borderWidth: 1,
+            //     fill: false,
+            //     pointRadius: 1
+            // },
+            // {
+            //     label: 'Obs. Infected',
+            //     data: output.realI,
+            //     borderColor: ['rgba(205, 49, 82, 1)'],
+            //     borderWidth: 2,
+            //     fill: false,
+            //     pointRadius: 1
+            // },
+            // {
+            //     label: 'Obs. Susceptible',
+            //     data: output.realS,
+            //     borderColor: ['rgba(49, 205, 82, 1)'],
+            //     borderWidth: 2,
+            //     fill: false,
+            //     pointRadius: 1
+            // },
+            // {
+            //     label: 'Obs. Recovered',
+            //     data: output.realR,
+            //     borderColor: ['rgba(49, 82, 205, 1)'],
+            //     borderWidth: 2,
+            //     fill: false,
+            //     pointRadius: 1
+            // },
+            // {
+            //     label: 'Obs. Cumulative infected',
+            //     data: output.realIplusR,
+            //     borderColor: ['rgba(100, 82, 5, 1)'],
+            //     borderWidth: 2,
+            //     fill: false,
+            //     pointRadius: 1
+            // }
             ]
         },
         options: {
@@ -402,12 +402,13 @@ function drawChart(output, y0, R0) {
 function populateCountryList(countries) {
     firstRun = false;
     document.getElementById("sel_countries").innerHTML = `
-    <option value="all">Global</option>
+    <option value="all">Todo el mundo</option>
     `;
     for (let i = 0; i < countries.length; i++) {
+        if(countries[i] == 'Peru'){
         document.getElementById("sel_countries").innerHTML += `
         <option value='${countries[i]}'>${countries[i]}</option>
-        `;
+        `;}
     }
 }
 
