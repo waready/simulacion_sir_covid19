@@ -1,0 +1,30 @@
+{
+  "name": "simulacion_sir_covid19",
+  "version": "1.0.0",
+  "description": "Trabajo desarrollado por     -Antony Japura Paredes     -Aly Yuliza Machaca Mamani     -Caleb Fernando Ichuta Arias",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waready/simulacion_sir_covid19.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waready/simulacion_sir_covid19/issues"
+  },
+  "homepage": "https://github.com/waready/simulacion_sir_covid19#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "laravel-mix": "^5.0.4",
+    "sass": "^1.26.10",
+    "sass-loader": "^8.0.2"
+  }
+}
