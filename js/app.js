@@ -16,9 +16,7 @@ $('#MoviPob').change(function(event) {
 $('#Suceptibilidad').change(function(event) {
     document.getElementById('SuceptPopulation').innerHTML = document.getElementById('Suceptibilidad').value;
 });
-$('#Letalidad').change(function(event) {
-    document.getElementById('LetalPopulation').innerHTML = document.getElementById('Letalidad').value;
-});
+
 
 
 
@@ -205,7 +203,7 @@ function simulate(){
             if(this.color=='grey'){
                 ctx.font = "30px Arial";
                 ctx.globalCompositeOperation="destination-over"
-                ctx.fillText("☣️", this.x-27, this.y+5);
+                // ctx.fillText("☣️", this.x-27, this.y+5);
                 ctx.fillText("Paciente 0", this.x+10, this.y+5);
             }
         };
