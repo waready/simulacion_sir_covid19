@@ -365,9 +365,9 @@ function drawChart(output, y0, R0) {
 
 function populateCountryList(countries) {
     firstRun = false;
-    document.getElementById("sel_countries").innerHTML = `
-    <option value="all">Todo el mundo</option>
-    `;
+    // document.getElementById("sel_countries").innerHTML = `
+    // <option value="all">Todo el mundo</option>
+    // `;
     for (let i = 0; i < countries.length; i++) {
         if(countries[i] == 'Peru'){
         document.getElementById("sel_countries").innerHTML += `
