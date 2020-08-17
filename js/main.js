@@ -19,7 +19,7 @@ function attachEventHandlers() {
     }
 
     function inputsChangedEventHandler(event) {
-        showBanner("Fetching data...");
+        showBanner("Opteniendo data...");
         fetchLatestData(finishedFetchingData);
         //save current state of the graphs' visibility
         chartState = [];
@@ -129,7 +129,7 @@ function finishedFetchingData() {
         let I = 0.5 * (todayActiveCases + yesterdayActiveCases);
         let S = 0.5 * (susceptibleToday + susceptibleToday);
         beta = Math.abs(delS) / (I * S / N);
-        console.log(beta)
+        //console.log(beta)
         let cumulativeRemovedToday = fetchedData[i].removed_;
         let cumulativeRemovedYesterday = fetchedData[i - 1].removed_;
         let delR = cumulativeRemovedToday - cumulativeRemovedYesterday;
@@ -183,22 +183,22 @@ function showTable() {
         layout: "fitDataStretch",
         columns: [
             {
-                title: "Date", field: "date",
+                title: "Fecha", field: "date",
                 sorter: function (a, b, aRow, bRow, column, dir, sorterParams) {
                     let dateA = new Date(a);
                     let dateB = new Date(b);
                     return dateA - dateB; //you must return the difference between the two values
                 }
             },
-            { title: "Total Cases", field: "confirmed", headerTooltip: "Population that has hitherto been affected, includes the currently infected, total recovered and dead" },
-            { title: "Deaths", field: "deaths", headerTooltip: "Total deaths till date" },
-            { title: "Recovered", field: "recovered", headerTooltip: "Total recoveries till date" },
-            { title: "Infectives", field: "infective_", headerTooltip: "Currently infected population" },
-            { title: "Removed", field: "removed_", headerTooltip: "Total recovered plus dead population" },
-            { title: "Susceptible", field: "susceptible_", headerTooltip: "Population not yet affected in any way" },
-            { title: "β", field: "beta", formatter: roundOff, headerTooltip: "Transmission constant" },
-            { title: "α", field: "alpha", formatter: roundOff, headerTooltip: "Recovery constant" },
-            { title: "R0", field: "R0", formatter: roundOff, headerTooltip: "Basic Reproduction Number" }
+            { title: "Total de Casos", field: "confirmed", headerTooltip: "La población que se ha visto afectada hasta ahora, incluye los infectados actualmente, el total recuperado y los muertos" },
+            { title: "Muertes", field: "deaths", headerTooltip: "Total de muertes hasta la fecha" },
+            { title: "Recuperados", field: "recovered", headerTooltip: "Total recuperaciones hasta la fecha" },
+            { title: "Infectados", field: "infective_", headerTooltip: "Población actualmente infectada" },
+            
+            { title: "Susceptibles", field: "susceptible_", headerTooltip: "Población aún no afectada de ninguna manera" },
+            { title: "β", field: "beta", formatter: roundOff, headerTooltip: "Constante de transmisión" },
+            { title: "α", field: "alpha", formatter: roundOff, headerTooltip: "Constante de recuperación" },
+            { title: "R0", field: "R0", formatter: roundOff, headerTooltip: "Número de reproducción básico" }
         ]
     });
 
@@ -313,46 +313,6 @@ function drawChart(output, y0, R0) {
                 fill: false,
                 pointRadius: 1
             }
-            // {
-            //     label: 'Est. Cumulative infected',
-            //     data: output.IplusR,
-            //     borderColor: ['rgba(150, 132, 55, 1)'],
-            //     borderWidth: 1,
-            //     fill: false,
-            //     pointRadius: 1
-            // },
-            // {
-            //     label: 'Obs. Infected',
-            //     data: output.realI,
-            //     borderColor: ['rgba(205, 49, 82, 1)'],
-            //     borderWidth: 2,
-            //     fill: false,
-            //     pointRadius: 1
-            // },
-            // {
-            //     label: 'Obs. Susceptible',
-            //     data: output.realS,
-            //     borderColor: ['rgba(49, 205, 82, 1)'],
-            //     borderWidth: 2,
-            //     fill: false,
-            //     pointRadius: 1
-            // },
-            // {
-            //     label: 'Obs. Recovered',
-            //     data: output.realR,
-            //     borderColor: ['rgba(49, 82, 205, 1)'],
-            //     borderWidth: 2,
-            //     fill: false,
-            //     pointRadius: 1
-            // },
-            // {
-            //     label: 'Obs. Cumulative infected',
-            //     data: output.realIplusR,
-            //     borderColor: ['rgba(100, 82, 5, 1)'],
-            //     borderWidth: 2,
-            //     fill: false,
-            //     pointRadius: 1
-            // }
             ]
         },
         options: {
@@ -366,7 +326,7 @@ function drawChart(output, y0, R0) {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Population'
+                        labelString: 'Población'
                     }
                 }],
                 xAxes: [{
@@ -376,20 +336,24 @@ function drawChart(output, y0, R0) {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Time (days)'
+                        labelString: 'Tiempo (dias)'
                     }
 
                 }]
             },
             title: {
                 display: true,
-                text: "Covid-19 over time | R0 = " + R0
+                text: "SIR Covid-19  | Peru "
             },
             maintainAspectRatio: false,
             responsive: false
         }
-    });
-
+        
+    }
+    );
+    console.log('suceptibles', output.S)
+    console.log('infectados', output.I)
+    console.log('recuperados', output.R)
     //restore saved graphs' visibility states
     if (chartState.length > 0) {
         for (let i = 0; i < chart.data.datasets.length; i++) {
