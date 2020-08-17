@@ -16,6 +16,10 @@
   width: 100%;
   margin-top: 2em;
 }
+.top .bottom__result .parametter_estimates h4 {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 .top .bottom__result .parametter_estimates .info {
   display: inline-flex;
 }

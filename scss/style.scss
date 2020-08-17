@@ -24,6 +24,10 @@ p, h1, h2, h3, h4, h5, h6, div, sub, b{
         width: 100%;
         margin-top:2em;
         .parametter_estimates{
+            h4{
+                font-weight: bold;
+                letter-spacing: 2px;
+            }
            .info{
                display: inline-flex;
                .p__item{
