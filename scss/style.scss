@@ -18,7 +18,7 @@ p, h1, h2, h3, h4, h5, h6, div, sub, b{
         }
     }
     .bottom__result{
-        padding: 1em;
+        padding: 0 1em 2em 1em;
         border: 1px solid $color_line;
         border-radius: 5px;
         width: 100%;
@@ -30,6 +30,7 @@ p, h1, h2, h3, h4, h5, h6, div, sub, b{
             }
            .info{
                display: inline-flex;
+               padding: 0;
                .p__item{
                    padding-right: 3em;
                    padding-top: 1em;
@@ -37,6 +38,17 @@ p, h1, h2, h3, h4, h5, h6, div, sub, b{
                }
     
            } 
+        }
+        .select__items{
+            display: inline-flex;
+            .item{
+                padding-right: 2em;
+                label{
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    padding-right: 5px;
+                }
+            }
         }
     }
 }

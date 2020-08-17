@@ -70,7 +70,7 @@
                     <canvas id="chart" width="1200" height="600" style="border: 1px solid;"> </canvas>
                 </div>
                 <div class="bottom__result">
-                    <div>
+                    <div style="display: none;">
                       Datos utilizados para la estimacion de los parametros:
                       <div style="display: none;">
                           <label for="latest">Latest</label>
@@ -103,9 +103,9 @@
                     </div>
                   </div>
   
-                  <div class="row">
-                      <div class="col-2">
-                          Pais
+                  <div class="select__items">
+                      <div class="item">
+                          <label>Pais</label>
                           <select id="sel_countries" class="inputs" style="display: none;">
                               <option value="Peru" selected>Peru</option>
                           </select>
@@ -113,15 +113,19 @@
                               <option value="">Peru</option>
                           </select>
                       </div>
-                      <div class="col-5">Poblacion Total<input type="number" id="N" class="inputs" value="7e9" min="10" title="Total population" disabled /></div>
-                      <div>
+                      <div class="item">
+                        <label>Poblacion Total</label>
+                        <input type="number" id="N" class="inputs" value="7e9" min="10" title="Total population" disabled />
+                      </div>
+                      <div class="item">
                           <label for="maxTime">Dias</label>
                           <input type="number" id="maxTime" class="inputs" value="365" title="Duration to simulate" />
                       </div>
-  
-                      <label for="chkShowTable">Mostrar Tabla de datos</label>
-                      <input type="checkbox" id="chkShowTable" onclick="toggleTableVisibility();" autocomplete="off" />
-  
+                      <div class="item">
+                        <input type="checkbox" id="chkShowTable" onclick="toggleTableVisibility();" autocomplete="off" />
+                        <label for="chkShowTable">Mostrar Tabla de datos</label>
+                      </div>
+            
                       <div id="dataTableHolder" style="display: none;"></div>
                   </div>
                 </div>
