@@ -57,7 +57,14 @@
             <!-- Collapsible content -->
         </nav>
         <!--/.Navbar-->
-
+        <div class="team">
+          <p class=team__title>Prentado por:</p>
+          <div class="people">
+              <p class="team__person">Antony Japura Paredes</p>
+              <p class="team__person">Aly Yuliza Machaca Mamani</p>
+              <p class="team__person">Caleb Fernando Ichuta Arias</p>
+          </div>
+        </div>
         <div class="container top" id="basic-info">
         <section id="#Peru">
             <div class="row">
@@ -114,19 +121,21 @@
                           </select>
                       </div>
                       <div class="item">
-                        <label>Poblacion Total</label>
+                        <label>Pais</label>
                         <input type="number" id="N" class="inputs" value="7e9" min="10" title="Total population" disabled />
                       </div>
                       <div class="item">
                           <label for="maxTime">Dias</label>
                           <input type="number" id="maxTime" class="inputs" value="365" title="Duration to simulate" />
                       </div>
+                  </div>
+                  <div class="item__table">
                       <div class="item">
-                        <input type="checkbox" id="chkShowTable" onclick="toggleTableVisibility();" autocomplete="off" />
-                        <label for="chkShowTable">Mostrar Tabla de datos</label>
-                      </div>
-            
-                      <div id="dataTableHolder" style="display: none;"></div>
+                          <input type="checkbox" id="chkShowTable" onclick="toggleTableVisibility();" autocomplete="off" />
+                          <label for="chkShowTable">Mostrar Tabla de datos</label>
+                        </div>
+              
+                        <div id="dataTableHolder" style="display: none;"></div>  
                   </div>
                 </div>
             </div>

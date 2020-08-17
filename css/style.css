@@ -40,6 +40,14 @@
   letter-spacing: 1px;
   padding-right: 5px;
 }
+.top .bottom__result .item__table {
+  display: block;
+  padding: 1.5em 0;
+}
+.top .bottom__result .item__table label {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 
 .bottom {
   padding: 1em;
@@ -75,4 +83,59 @@
 }
 .bottom #simulation {
   margin-top: 2em;
+}
+
+.team {
+  text-align: center;
+  padding-top: 1em;
+}
+.team .team__title {
+  padding-right: 2em;
+  letter-spacing: 1px;
+}
+.team .people {
+  display: inline-flex;
+}
+.team .people .team__person {
+  padding-right: 2em;
+  letter-spacing: 1px;
+}
+.team .people p {
+  margin: 0;
+}
+
+@media (min-width: 200px) and (max-width: 767px) {
+  .team p {
+    margin: 0;
+  }
+  .team .team__title {
+    padding-right: 0;
+    letter-spacing: 1px;
+  }
+  .team .people {
+    display: block;
+  }
+  .team .people .team__person {
+    padding-right: 0;
+    letter-spacing: 1px;
+  }
+  .team .people p {
+    margin: 0;
+  }
+
+  .top .bottom__result .parametter_estimates .info {
+    display: block;
+  }
+  .top .bottom__result .parametter_estimates .info .p__item {
+    padding-right: 0;
+    padding-top: 1em;
+    padding-bottom: 0;
+  }
+  .top .bottom__result .select__items {
+    display: block;
+  }
+  .top .bottom__result .select__items .item {
+    padding-right: 0;
+    padding-bottom: 1em;
+  }
 }
